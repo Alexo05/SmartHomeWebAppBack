@@ -18,6 +18,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddSingleton<DeviceService>();
+builder.Services.AddSingleton<UserService>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -26,7 +27,11 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 app.UseCors("AllowAngularApp");
-
+app.UseCors(policy =>
+    policy.AllowAnyOrigin()
+          .AllowAnyMethod()
+          .AllowAnyHeader()
+);
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -13,7 +13,7 @@ namespace SmartHomeBack.Services
         {
             var client = new MongoClient(settings.Value.ConnectionString);
             var database = client.GetDatabase(settings.Value.DatabaseName);
-            _devices = database.GetCollection<Device>("devices"); // collection name from Python model
+            _devices = database.GetCollection<Device>("devices"); 
         }
 
         public List<Device> Get() => _devices.Find(d => true).ToList();

@@ -31,6 +31,7 @@ namespace SmartHomeBack.Controllers
         [HttpPost]
         public ActionResult<Device> Create(Device device)
         {
+            Console.WriteLine(device);
             _deviceService.Create(device);
             return CreatedAtRoute("GetDevice", new { id = device.Id }, device);
         }
